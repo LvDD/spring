@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation=" http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                            http://www.springframework.org/schema/mvc
+                            http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+    <!-- 自动扫描  @Controller-->
+    <context:component-scan base-package="com.lvdong.spring.controller"/>
+
+    <!-- 启用SpringMVC注解功能 -->
+    <mvc:annotation-driven/>
+
+
+    <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>-->
+
+    <!-- 配置Velocity视图解析器 -->
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="cache" value="false"/>
+        <property name="order" value="1"/>
+        <property name="suffix" value=".vm"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <!--VTL并不直接支持日期和数字的格式化，而是通过提供日期和时间的工具类来支持格式化。
+        为了允许使用这些工具，你需要告诉VelocityViewResolver在模板中暴露它们时使用的属性名。
+        这些属性名是通过 VelocityViewResolver的dateToolAttribute和numberToolAttribute属性来规定的-->
+        <property name="dateToolAttribute" value="dateTool" />
+        <property name="toolboxConfigLocation">
+            <value>/WEB-INF/classes/velocity-toolbox.xml</value>
+        </property>
+    </bean>
+
+    <!-- 配置Velocity引擎 -->
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>
+        <property name="configLocation" value="classpath:velocity.properties"/>
+    </bean>
+
+
+    <!-- 文件上传配置 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 上传文件大小限制为31M，31*1024*1024 -->
+        <property name="maxUploadSize" value="32505856"/>
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
+</beans>
