@@ -5,6 +5,7 @@ import com.lvdong.spring.model.User;
 import java.util.List;
 
 /**
+ * 用户服务层
  * Created by lvdong on 2016/9/28.
  */
 public interface UserService {

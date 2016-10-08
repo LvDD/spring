@@ -35,9 +35,7 @@
         为了允许使用这些工具，你需要告诉VelocityViewResolver在模板中暴露它们时使用的属性名。
         这些属性名是通过 VelocityViewResolver的dateToolAttribute和numberToolAttribute属性来规定的-->
         <property name="dateToolAttribute" value="dateTool" />
-        <property name="toolboxConfigLocation">
-            <value>/WEB-INF/classes/velocity-toolbox.xml</value>
-        </property>
+        <property name="toolboxConfigLocation" value="/WEB-INF/classes/velocity-toolbox.xml"/>
     </bean>
 
     <!-- 配置Velocity引擎 -->

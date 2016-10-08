@@ -3,6 +3,7 @@ package com.lvdong.spring.model;
 import java.util.Date;
 
 /**
+ * 用户类
  * Created by lvdong on 2016/9/28.
  */
 public class User extends BaseModel {
@@ -12,9 +13,18 @@ public class User extends BaseModel {
     private String userEmail;
     private String userPwd;
     private String pwdSalt;
+    private Short userState;
     private Date createTime;
     private Date modifyTime;
     private Short isDelete;
+
+    public Short getUserState() {
+        return userState;
+    }
+
+    public void setUserState(Short userState) {
+        this.userState = userState;
+    }
 
     public Long getId() {
         return id;

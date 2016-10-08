@@ -11,7 +11,9 @@
         <result column="pwd_salt" property="pwdSalt" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="DATE"/>
         <result column="modify_time" property="modifyTime" jdbcType="DATE"/>
-        <result column="is_delete" property="isDelete" jdbcType="SMALLINT"></result>
+        <result column="is_delete" property="isDelete" jdbcType="SMALLINT"/>
+        <result column="user_phone" property="userPhone" jdbcType="VARCHAR"/>
+        <result column="user_state" property="userState" jdbcType="TINYINT"/>
     </resultMap>
 
     <select id="selectUserById" parameterType="java.lang.Long" resultMap="UserBaseMap">

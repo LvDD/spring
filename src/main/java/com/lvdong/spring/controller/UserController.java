@@ -5,7 +5,6 @@ import com.lvdong.spring.model.User;
 import com.lvdong.spring.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +20,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    private static Logger logger = Logger.getLogger(UserController.class);
+    private static final Logger logger = Logger.getLogger(UserController.class);
 
     @Resource
     private UserService userService;
