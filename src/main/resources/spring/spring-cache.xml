@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 切入对象 -->
+    <bean id="methodCacheInterceptor" class="com.lvdong.spring.common.MethodCacheInterceptor"/>
+    <bean id="methodCachePointCut" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+
+        <property name="advice" ref="methodCacheInterceptor"/>
+        <!-- 需要加入缓存的类或方法 -->
+        <property name="patterns">
+            <list>
+                <!-- 确定正则表达式列表 -->
+                <value>com\.lvdong\.spring\.service\.impl\...*ServiceImpl.*</value>
+            </list>
+        </property>
+    </bean>
+</beans>

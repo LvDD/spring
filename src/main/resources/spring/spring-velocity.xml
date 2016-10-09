@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置Velocity视图解析器 -->
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="cache" value="false"/>
+        <property name="order" value="1"/>
+        <property name="suffix" value=".vm"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <!--VTL并不直接支持日期和数字的格式化，而是通过提供日期和时间的工具类来支持格式化。
+        为了允许使用这些工具，你需要告诉VelocityViewResolver在模板中暴露它们时使用的属性名。
+        这些属性名是通过 VelocityViewResolver的dateToolAttribute和numberToolAttribute属性来规定的-->
+        <property name="dateToolAttribute" value="dateTool"/>
+        <property name="toolboxConfigLocation" value="/WEB-INF/classes/velocity-toolbox.xml"/>
+    </bean>
+
+    <!-- 配置Velocity引擎 -->
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>
+        <property name="configLocation" value="classpath:properties/velocity.properties"/>
+    </bean>
+</beans>
