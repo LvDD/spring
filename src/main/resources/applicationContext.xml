@@ -18,7 +18,6 @@
     <!-- 启用SpringMVC注解功能 -->
     <mvc:annotation-driven/>
 
-
     <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
